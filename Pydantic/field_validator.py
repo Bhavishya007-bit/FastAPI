@@ -1,17 +1,28 @@
-from pydantic import BaseModel, EmailStr, AnyUrl, Field
+from pydantic import BaseModel, EmailStr, AnyUrl, Field, field_validator
 from typing import List, Dict, Optional, Annotated
 
 #Pydantic model
 class Patient(BaseModel): # We have to always pass BaseModel inside the class
      #Schema defined
-     name : Annotated[str, Field(max_length=20, title = 'Name of the patient', description= 'Give the name of the patient in less than 20 characters', examples= ['Amit', 'Devansh'])]
+     name : str
      email : EmailStr
-     linkedin_url : AnyUrl
      age : int
-     weight : Annotated[float, Field(gt=0, strict= True)]
+     weight : float
      married : bool
-     allergies : Optional[List[str]] = None
-     contact_details : Dict[str,str]
+     allergies : List[str]
+     contact_details : Dict[str, str]
+
+     @field_validator('email')
+     @classmethod
+     def email_validator(cls, value):
+
+         valid_domains = ['hdfc.com', 'icici.com']
+
+         domain_name = value.split('@')[-1]
+
+         if domain_name not in valid_domains:
+             raise ValueError('Not a valid domain')
+         return value
 
 def insert_patient_data(patient : Patient):
 
