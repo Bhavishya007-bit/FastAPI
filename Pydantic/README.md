@@ -701,9 +701,9 @@ A client can send:
 
 ```json
 {
-    "name": "Rahul",
-    "age": 20,
-    "weight": 65.5
+  "name": "Rahul",
+  "age": 20,
+  "weight": 65.5
 }
 ```
 
@@ -769,8 +769,8 @@ Example JSON:
 
 ```json
 {
-    "name": "Rahul",
-    "age": 20
+  "name": "Rahul",
+  "age": 20
 }
 ```
 
@@ -864,12 +864,12 @@ Pydantic Model
 
 # 21. Important Pydantic Methods — Pydantic v2
 
-| Method | Purpose |
-|---|---|
-| `model_validate()` | Validate input and create a model |
-| `model_dump()` | Convert model to dictionary |
-| `model_dump_json()` | Convert model to JSON |
-| `model_validate_json()` | Validate JSON input |
+| Method                  | Purpose                           |
+| ----------------------- | --------------------------------- |
+| `model_validate()`      | Validate input and create a model |
+| `model_dump()`          | Convert model to dictionary       |
+| `model_dump_json()`     | Convert model to JSON             |
+| `model_validate_json()` | Validate JSON input               |
 
 Example:
 
@@ -919,10 +919,10 @@ Request:
 
 ```json
 {
-    "name": "Rahul",
-    "age": 20,
-    "weight": 65.5,
-    "height": 175
+  "name": "Rahul",
+  "age": 20,
+  "weight": 65.5,
+  "height": 175
 }
 ```
 
