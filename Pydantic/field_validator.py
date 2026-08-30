@@ -24,6 +24,14 @@ class Patient(BaseModel): # We have to always pass BaseModel inside the class
              raise ValueError('Not a valid domain')
          return value
 
+     @field_validator('age', mode = 'after')
+     @classmethod
+     def validate_age(cls, value):
+         if 0 < value < 100:
+             return value
+         else:
+             raise ValueError('Age should be in between 0 to 100')
+
 def insert_patient_data(patient : Patient):
 
     print(patient.name)
@@ -37,10 +45,12 @@ def update_patient_data(patient : Patient):
     print('updated')
 
 
-patient_info = {'name': 'Bhavishya', 'email':'abc@gmail.com','linkedin_url':'http://linkedin.com/1322','age':20, 'weight': 76.55, 'married': False, 'allergies': ['pollen', 'dust'], 'contact_details':{'email':'abc@gmail.com', 'phone':'789541288'}}
+patient_info = {'name': 'Bhavishya', 'email':'abc@hdfc.com','linkedin_url':'http://linkedin.com/1322','age':'20', 'weight': 76.55, 'married': False, 'allergies': ['pollen', 'dust'], 'contact_details':{'email':'abc@gmail.com', 'phone':'789541288'}}
 
 patient1 = Patient(**patient_info)  # Here we have used ** to unpack the dictionary
 
 insert_patient_data(patient1)
 
 update_patient_data(patient1)  # pydantic is smart enough and converted it into integer
+
+# fieldvalidator 'before' take value before the coersive
