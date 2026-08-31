@@ -138,7 +138,7 @@ def view_patient(
 ):
     """
     Fetch a specific patient using patient_id.
-
+#   ... makes this required
     THEORY:
     A PATH PARAMETER is a variable part of the URL.
 
